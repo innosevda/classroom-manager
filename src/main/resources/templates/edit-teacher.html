@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Teacher</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            color: #003366;
+        }
+        form {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>Edit Teacher</h2>
+    <form th:object="${teacher}" th:action="@{/update-teacher}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" required/>
+        </div>
+        <div>
+            <label>Surname:</label>
+            <input type="text" th:field="*{surname}" required/>
+        </div>
+
+        <div>
+            <label>Username:</label>
+            <input type="text" th:field="*{username}" required/>
+        </div>
+
+        <div>
+            <a class="btn btn-edit" th:href="@{/edit-password}">Edit Password</a>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

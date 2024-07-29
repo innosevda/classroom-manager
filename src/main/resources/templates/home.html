@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Classroom Management</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    h1 {
+      color: #003366;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .card-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .logout {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .logout:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+<h1 th:text="${session.user.name + ' ' + session.user.surname}"></h1>
+<h1>Classroom Management</h1>
+
+<div class="card-container">
+  <a class="card" th:href="@{/students}">
+    <div class="card-title">Students</div>
+    <div class="card-description">Manage student information</div>
+  </a>
+  <a class="card" th:href="@{/teachers}">
+    <div class="card-title">Teacher Profile</div>
+    <div class="card-description">Manage your information</div>
+  </a>
+  <a class="card" th:href="@{/classrooms}">
+    <div class="card-title">Classrooms</div>
+    <div class="card-description">Manage classroom information</div>
+  </a>
+  <a class="card" th:href="@{/files}">
+    <div class="card-title">Documents</div>
+    <div class="card-description">Manage Classroom Documents</div>
+  </a>
+</div>
+
+<div class="btn-container">
+  <a class="logout" th:href="@{/logout}">Logout</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Class</title>
+  <style>
+    /* Your form styling here */
+  </style>
+</head>
+<body>
+<div>
+  <h2>Edit Class</h2>
+  <form th:object="${student}" th:action="@{/update-student}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+      <label>Name:</label>
+      <input type="text" th:field="*{name}" required/>
+    </div>
+    <div>
+      <label>Surname:</label>
+      <input type="text" th:field="*{surname}" required/>
+    </div>
+
+    <div>
+      <label>Username:</label>
+      <input type="text" th:field="*{email}" required/>
+    </div>
+
+    <div>
+      <label>Password:</label>
+      <input type="text" th:field="*{grade}" required/>
+    </div>
+
+<!--the code was copied from add-student and did not work-->
+<!--    <div class="form-group">-->
+<!--      <label>Classrooms:</label>-->
+<!--      <select th:field="*{classroom}">-->
+<!--        <option th:value="${classroom.id}"-->
+<!--                th:each="classroom : ${classrooms}"-->
+<!--                th:text="${classroom.name}"></option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+    <div class="form-group">
+      <label>Classrooms:</label>
+      <select th:field="*{classroom.id}">
+        <option th:each="classroom : ${classrooms}"
+                th:value="${classroom.id}"
+                th:text="${classroom.name}"
+                th:selected="${classroom.id == student.classroom.id}"></option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

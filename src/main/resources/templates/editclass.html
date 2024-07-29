@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Class</title>
+    <style>
+        /* Your form styling here */
+    </style>
+</head>
+<body>
+<div>
+    <h2>Edit Class</h2>
+    <form th:object="${classroom}" th:action="@{/update}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" required/>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
